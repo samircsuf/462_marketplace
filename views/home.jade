@@ -1,21 +1,3 @@
 extends layout
 
 block content
-	div.container
-		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
-				br
-				br
-				#user
-					h1.text-center.login-title Welcome to GigSync #{user.venueName}! Check out your profile info below.
-						div.signup-wall
-							ul.user-details
-								li.h3 Username 
-								li #{user.username}
-								li.h3 Email  
-								li #{user.email}
-								li.h3 Venue Name 
-								li  #{user.venueName} 
-								li.h3 Your website 
-								li  #{user.website}
-						a(href='/signout', class='text-center new-account') Sign Out

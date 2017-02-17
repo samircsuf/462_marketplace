@@ -4,13 +4,12 @@ block content
         .jumbotron.text-center
             h1 Marketplace
             p Home for service providers
-            form.form-inline
+            form.form-inline(action='/login')
                 .input-group
                     input.form-control(type='email', size='25', placeholder='Email Address', required='')
                     input.form-control(type='password', size='25', placeholder='Password', required='')
                     .input-group-btn
                         button.btn.btn-danger(type='button') Login
-                        | button>
         #about.container-fluid
             .row
                 .col-md-8
