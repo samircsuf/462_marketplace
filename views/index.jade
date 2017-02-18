@@ -1,5 +1,59 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+        .jumbotron.text-center
+            h1 Marketplace
+            p Home for service providers
+            form.form-inline(action='/login')
+                .input-group
+                    input.form-control(type='email', size='25', placeholder='Email Address', required='')
+                    input.form-control(type='password', size='25', placeholder='Password', required='')
+                    .input-group-btn
+                        button.btn.btn-danger(type='button') Login
+        #about.container-fluid
+            .row
+                .col-md-8
+                    h2 About Our Service
+                    p
+                        | We provide a platform for people to connect and ask for services from one another.
+                    button.btn.btn-default.btn-lg Get in Touch
+                .col-md-4
+                    span.glyphicon.glyphicon-signal.logo
+        #contact.container-fluid.bg-grey
+            h2.text-center CONTACT
+            .row
+                .col-md-5
+                    p Contact us and we'll get back to you within 24 hours.
+                    p
+                        span.glyphicon.glyphicon-map-marker
+                        |  Fullerton, US
+                    p
+                        span.glyphicon.glyphicon-phone
+                        |  +01 (714)234-432
+                    p
+                        span.glyphicon.glyphicon-envelope
+                        |  ddnguyen@gmail.com
+                .col-md-7
+                    .row
+                        .col-md-6.form-group
+                            input#name.form-control(name='name', placeholder='Name', type='text', required='')
+                        .col-md-6.form-group
+                            input#email.form-control(name='email', placeholder='Email', type='email', required='')
+                        textarea#comments.form-control(name='comments', placeholder='Comment', rows='5')
+                        br
+                        .row
+                            .col-md-12.form-group
+                                button.btn.btn-default.pull-right(type='submit') Send
+            #career.text-center
+                h2 CONTACT THE DEVELOPMENT TEAM
+                p
+                    | At MarketPlace we always welcome talented and passionate individual. These are some of the ways we can stay connected.
+                ul.list-inline.banner-social-buttons
+                    li
+                        a.btn.btn-default.btn-lg(href='https://www.twitter.com')
+                            i.fa.fa-github.fa-fw
+                            span.network-name Twitter
+                    li
+                        a.btn.btn-default.btn-lg(href='https://www.github.com/shan224/462_marketplace')
+                            i.fa.fa-github.fa-fw
+                            span.network-name GitHub
