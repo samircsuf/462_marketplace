@@ -1,3 +1,32 @@
 extends layout
 
 block content
+	div.container
+		div.row
+			div.col-xs-5.col-sm-5.col-md-10.col-lg-10.col-xs-offset-0.col-sm-offset-0.col-md-offset-5.col-lg-offset-1
+				br
+				br
+				br
+				br
+
+				h1.text-center.login-title Welcome  #{user.username}! Check out your profile info below.
+				
+						div.signup-wall.text-left
+							ul.user-details
+								table
+									tbody
+										tr
+											td.li.h3 Username:         
+												td.li(style='padding: 15px;') #{user.username}
+										tr
+											td.li.h3 Email:
+												td.li(style='padding: 15px;') #{user.email}
+										tr
+											td.li.h3 Venue Name:
+												td.li(style='padding: 15px;') #{user.venueName}
+										tr
+											td.li.h3 Your Website:
+												td.li(style='padding: 15px;') #{user.website}
+
+									
+						a(href='/signout', class='text-center new-account') Sign Out
