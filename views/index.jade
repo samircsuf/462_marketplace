@@ -1,59 +1,119 @@
 extends layout
 
 block content
-        .jumbotron.text-center
-            h1 Marketplace
-            p Home for service providers
-            form.form-inline(action='/login')
-                .input-group
-                    input.form-control(type='email', size='25', placeholder='Email Address', required='')
-                    input.form-control(type='password', size='25', placeholder='Password', required='')
-                    .input-group-btn
-                        button.btn.btn-danger(type='button') Login
-        #about.container-fluid
-            .row
-                .col-md-8
-                    h2 About Our Service
-                    p
-                        | We provide a platform for people to connect and ask for services from one another.
-                    button.btn.btn-default.btn-lg Get in Touch
-                .col-md-4
-                    span.glyphicon.glyphicon-signal.logo
-        #contact.container-fluid.bg-grey
-            h2.text-center CONTACT
-            .row
-                .col-md-5
-                    p Contact us and we'll get back to you within 24 hours.
-                    p
-                        span.glyphicon.glyphicon-map-marker
-                        |  Fullerton, US
-                    p
-                        span.glyphicon.glyphicon-phone
-                        |  +01 (714)234-432
-                    p
-                        span.glyphicon.glyphicon-envelope
-                        |  ddnguyen@gmail.com
-                .col-md-7
-                    .row
-                        .col-md-6.form-group
-                            input#name.form-control(name='name', placeholder='Name', type='text', required='')
-                        .col-md-6.form-group
-                            input#email.form-control(name='email', placeholder='Email', type='email', required='')
-                        textarea#comments.form-control(name='comments', placeholder='Comment', rows='5')
-                        br
-                        .row
-                            .col-md-12.form-group
-                                button.btn.btn-default.pull-right(type='submit') Send
-            #career.text-center
-                h2 CONTACT THE DEVELOPMENT TEAM
-                p
-                    | At MarketPlace we always welcome talented and passionate individual. These are some of the ways we can stay connected.
-                ul.list-inline.banner-social-buttons
-                    li
-                        a.btn.btn-default.btn-lg(href='https://www.twitter.com')
-                            i.fa.fa-github.fa-fw
-                            span.network-name Twitter
-                    li
-                        a.btn.btn-default.btn-lg(href='https://www.github.com/shan224/462_marketplace')
-                            i.fa.fa-github.fa-fw
-                            span.network-name GitHub
+    #main-login.view
+      #login-display
+        .row.vertical-center-row
+          #brand.col-lg-6.full-bg-img.text-center(style='color:white;')
+            h1.brand-heading MARKETPLACE
+            |           
+            p.brand-text Home for service providers
+          |         
+          .col-lg-6
+            form.form-group(method='POST', action='/login')
+              label(for='email', style='color:white;') User Name:
+              |             
+              #email.input-group.col-lg-6
+                span.input-group-addon
+                  i.glyphicon.glyphicon-user
+                |               
+                input.form-control(type='email', size='20', placeholder='Enter Username', required='')
+              |             
+              label(for='pwd', style='color:white;') Password:
+              |             
+              #pwd.input-group.col-lg-6
+                span.input-group-addon
+                  i.glyphicon.glyphicon-lock
+                |               
+                input.form-control(type='password', size='20', placeholder='Enter Password', required='')
+              |             
+              br
+              |             
+              .col-lg-3.col-lg-offset-1(style='display:inline')
+                button.btn.btn-primary(type='submit') Login
+              |             
+              a.btn.btn-primary(href='#') Sign up
+    |   
+    section#contact-us
+      .jumbotron.jumbotron-sm
+        .container
+          .row
+            .col-sm-12.col-lg-12
+              h1.h1
+                | Contact us 
+                small Feel free to contact us
+      |     
+      .container
+        .row
+          .col-md-8
+            .well.well-sm
+              form
+                .row
+                  .col-md-6
+                    .form-group
+                      label(for='name')
+                        | Name
+                      |                     
+                      input#name.form-control(type='text', placeholder='Enter name', required='required')
+                    |                   
+                    .form-group
+                      label(for='email')
+                        | Email Address
+                      |                     
+                      .input-group
+                        span.input-group-addon
+                          span.glyphicon.glyphicon-envelope
+                        |                       
+                        input#email.form-control(type='email', placeholder='Enter email', required='required')
+                    |                   
+                    .form-group
+                      label(for='subject')
+                        | Subject
+                      |                     
+                      select#subject.form-control(name='subject', required='required')
+                        option(value='na', selected='') Choose One:
+                        |                                 
+                        option(value='service') General Customer Service
+                        |                                 
+                        option(value='suggestions') Suggestions
+                        |                                 
+                        option(value='product') Product Support
+                  |                 
+                  .col-md-6
+                    .form-group
+                      label(for='name')
+                        | Message
+                      |                     
+                      textarea#message.form-control(name='message', rows='9', cols='25', required='required', placeholder='Message')
+                  |                 
+                  .col-md-12
+                    button#btnContactUs.btn.btn-primary.pull-right(type='submit')
+                      | Send Message
+          |         
+          .col-md-4
+            form
+              legend
+                span.glyphicon.glyphicon-globe
+                |  Our office
+              |             
+              address
+                strong California State University, Fullerton
+                br
+                |                 800 N State College Blvd
+                br
+                |                 Fullerton, CA 92831
+                br
+                |                 
+                abbr(title='Phone')
+                  | P:
+                |                 (123) 456-7890
+              |             
+              address
+                strong Daniel Nguyen
+                br
+                |                 
+                a(href='mailto:#') nguyen.daniel@gmail.com
+    |   
+    footer
+      a(href='#main-login')
+        p Return to top of the page
