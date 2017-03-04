@@ -1,21 +1,58 @@
+.view {
+    background: url(/images/handshake-blur.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#main-login {
+    height: 100vh;
+}
+
+#login-display {
+    width: 1000px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 300px;
+}
+
+#brand {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.brand-heading {
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.brand-text {
+    font-size: 20px;
+}
+
+#contact-us {
+    height: 95vh;
+}
+
 .jumbotron {
-	background-color: #1E90FF;
-	color: white;
-	padding: 100px 25px;
+    background: #5CB8FF;
+    color: #FFF;
+    border-radius: 0px;
 }
 
-.container-fluid {
-	padding:60px 50px;
+.jumbotron-sm {
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
-.logo {
-	font-size: 200px;
-	color: #1E90FF;
+.jumbotron small {
+    color: #FFF;
 }
 
-@media screen and (max-width: 768px) {
-	.col-sm-4 {
-		text-align: center;
-		margin: 25px 0;
-	}
+.h1 small {
+    font-size: 24px;
 }
