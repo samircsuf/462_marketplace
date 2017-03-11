@@ -17,7 +17,7 @@ block content
                 span.input-group-addon
                   i.glyphicon.glyphicon-user
                 |               
-                input.form-control(type='email', size='20', placeholder='Enter Username', required='')
+                input.form-control(type='text',name ='email',class='form-control', size='20', placeholder='Enter Email', required,autofocus)
               |             
               label(for='pwd', style='color:white;') Password:
               |             
@@ -25,14 +25,17 @@ block content
                 span.input-group-addon
                   i.glyphicon.glyphicon-lock
                 |               
-                input.form-control(type='password', size='20', placeholder='Enter Password', required='')
+                input.form-control(type='password', name='password' class='form-control', size='20',placeholder='Password', required)
               |             
               br
               |             
               .col-lg-3.col-lg-offset-1(style='display:inline')
-                button.btn.btn-primary(type='submit') Login
+                button.btn.btn-primary(type='submit',href='/login') Login
               |             
-              a.btn.btn-primary(href='#') Sign up
+              a.btn.btn-primary(href='/signup') Sign up
+            #message
+                  if message
+                    h1.text-center #{message}    
     |   
     section#contact-us
       .jumbotron.jumbotron-sm
