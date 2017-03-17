@@ -19,6 +19,10 @@ module.exports = function(passport){
 		res.render('index', { message: req.flash('message') });
 	});
 
+	router.get('/search', function(req, res){
+		res.render('search',{message: req.flash('message')});
+	});
+
 	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('login', { message: req.flash('message') });
