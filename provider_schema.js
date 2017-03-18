@@ -65,14 +65,14 @@ function getNextSequence (name) {
             update: { $inc: { seq: 1 } },
             new: true
           }
-   );
+   );`
 
    return ret.seq;
 }
 */
 var providerRecords = [
     {
-	_id: 'AAB10001', //getNextSequence("sid"), //ObjectID('AA1111')	
+	_id: 'AAB100231', //getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: 'John',
 	last_name: 'Lowes',
     username: 'jlowes',
@@ -109,7 +109,7 @@ var providerRecords = [
 	created: Date.now(function(){return new Date().toISOString();}),
 	modified: Date.now(function(){return new Date().toISOString();})
 },{
-	_id: 'AAB10002',//getNextSequence("sid"), //ObjectID('AA1111')	
+	_id: 'AAB100023',//getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: 'Eric',
 	last_name: 'Meyers',
     username: 'ericmc',
@@ -133,7 +133,7 @@ var providerRecords = [
 		rating: 4.0
     }],
 	services:[{
-        name:'Coding Tutor', 
+        name:'Math Tutor', 
         rate: 15
         },
         {
@@ -162,6 +162,21 @@ function dc (msg, callback) {
         callback();
     });
 }
+
+Provider.find({ 'services.name' : 'Math Tutor'}).
+ where('radius').lt(20).
+ where('services.rate').gt(10).lt(20).
+ where('comments.rating').in([4.0, 4.5]).
+ limit(10).
+ sort('-radius').
+ select('first_name last_name services.name services.rate').
+ exec(function (err, data) {
+   if(err)
+       console.log(err);
+   else
+       console.log('Found documents for services1: \n', JSON.stringify(data));
+});
+
 
 //close the connection
 mongoose.connection.close();
