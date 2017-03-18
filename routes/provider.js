@@ -1,7 +1,8 @@
 var express = require('express');
 var Provider = require('../models/provider')
+var router = express.Router();
 
-app.put('/profile/:id', function(req, res) {
+router.post('/profile/:id', function(req, res) {
     Provider.findById(req.params.id, function(err, provider) {
         if (err) {
             res.status(500).send(err);
@@ -20,8 +21,9 @@ app.put('/profile/:id', function(req, res) {
             provider.contact.email = req.body.email || provider.contact.email;
             provider.contact.zip = req.body.zip || provider.contact.zip;
             provider.contact.state = req.body.state || provider.contact.state;
-            //Not sure how to implement updating "services"
-
+            //update services information
+            provider.services.name = req.body.service || provider.services.name;
+            provider.services.rate = req.body.rate || provider.services.rate;
 
             //Save the updated document back to the database
             provider.save(function(err, provider) {
