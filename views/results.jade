@@ -1,0 +1,44 @@
+extends layout
+
+
+block content
+    
+    .jumbotron.text-center
+        h1 Heres what we found
+    .text-left
+      ol(id='result_list', style='width:100%' )
+        div
+          dt Jill's  Tutoring 
+          dd 20+ years of tutoring experience
+          dd $50.00 per hour
+        br
+        div
+          dt Joe's Tutoring
+          dd Joe teaches math,science, and basket weaving.
+          dd $94.00 per hour 
+    script.
+      //- var data = !{data};
+      //- data.forEach(function(obj){
+      //-   appendRow(obj)
+      //- });
+   
+      //- // append row to the HTML table
+      //- function appendRow() {
+      //-     var tbl = document.getElementById('result_table'), // table reference
+      //-         row = tbl.insertRow(tbl.rows.length),      // append table row
+      //-         i;
+      //-     // insert table cells to the new row
+      //-     for (i = 0; i < tbl.rows[0].cells.length; i++) {
+      //-         createCell(row.insertCell(i), obj.First_name, 'row');
+      //-     }
+      //- }
+      
+      //- // create DIV element and append to the table cell
+      //- function createCell(cell, text, style) {
+      //-     var div = document.createElement('div'), // create DIV element
+      //-         txt = document.createTextNode(text); // create text node
+      //-     div.appendChild(txt);                    // append text node to the DIV
+      //-     div.setAttribute('class', style);        // set DIV class attribute
+      //-     div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+      //-     cell.appendChild(div);                   // append DIV to the table cell
+      //- }

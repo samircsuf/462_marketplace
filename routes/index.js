@@ -24,7 +24,9 @@ module.exports = function(passport){
 	});
 	
 	router.post('/search',function(req,res){
-		query(req.body.search);
+		query(req.body.search,res);
+	
+		
 	});
 	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any

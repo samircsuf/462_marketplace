@@ -1,8 +1,10 @@
 extends layout
 
 block content
+    
     .jumbotron.text-center
       h1 Find a service
       form.form-group(method='POST', action='/search')
-        input(type='text', name='search', id='search',placeholder='Math tutoring')
+        input(type='text', name='search', id='search',placeholder='Math tutoring',autofocus)
         button(class='btn btn-lg btn-primary', type='submit') Search
+

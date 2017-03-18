@@ -1,8 +1,9 @@
 
 var Provider = require('../models/provider.js');
 
+var export_data = null;
 
-module.exports = function(search_param){
+module.exports = function(search_param,res){
     Provider.find({ 'services.name' : search_param}).
     where('radius').lt(20).
     where('services.rate').gt(10).lt(20).
@@ -14,9 +15,10 @@ module.exports = function(search_param){
     if(err)
         console.log(err);
     else
-        console.log('Found documents for services1: \n', JSON.stringify(data));
+        // console.log('Found documents for services1: \n', data.split(','));
+         res.render('results',{data:JSON.stringify(data)});
     });
-
+    
 };
 
 
