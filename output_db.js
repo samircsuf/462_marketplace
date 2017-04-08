@@ -56,7 +56,7 @@ Provider.find().
    if(err)
        console.log(err);
    else
-       console.log('Found documents for services1: \n', JSON.stringify(data,null, 2));
+       console.log('Found documents for services: \n', JSON.stringify(data,null, 2));
 });
 
 

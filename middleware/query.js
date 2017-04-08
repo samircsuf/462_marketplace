@@ -15,6 +15,7 @@ module.exports = function(search_param,res){
         console.log(err);
     else
         // console.log('Found documents for services1: \n', data.split(','));
+         console.log(JSON.stringify(data,null,2));
          res.render('results',{data:JSON.stringify(data)});
     });
     
