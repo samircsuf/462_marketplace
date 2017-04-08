@@ -24,7 +24,7 @@ block content
         .w3-hide-small.w3-dropdown-hover
           button.w3-button.w3-padding-large(title='Notifications')
             i.fa.fa-bell
-            span.w3-badge.w3-right.w3-small.w3-green 
+            span.w3-badge.w3-right.w3-small.w3-green
           .w3-dropdown-content.w3-white.w3-card-4
             a(href='#') One new friend request
             a(href='#') John Doe posted on your wall
@@ -59,6 +59,9 @@ block content
               p
                 i.fa.fa-birthday-cake.fa-fw.w3-margin-right.w3-text-theme
                 |  April 1, 1988
+              p
+                div(style='text-align:center')
+                    a.btn.btn-primary(href='/provider', role='button') Update Profile
           br
           // Accordion
           .w3-card-2.w3-round
@@ -222,7 +225,7 @@ block content
       h5 Footer
     footer.w3-container.w3-theme-d5
       p
-        | Powered by 
+        | Powered by
         a(href='https://www.w3schools.com/w3css/default.asp', target='_blank') w3.css
     script.
       // Accordion

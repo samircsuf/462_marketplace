@@ -1,4 +1,3 @@
-
 var Provider = require('../models/provider.js');
 
 var export_data = null;
