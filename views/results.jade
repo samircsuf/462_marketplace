@@ -18,7 +18,10 @@ block content
           dd $94.00 per hour 
     script.
         var data = !{data};
-        console.log(data);
+        //console.log(data);
+        for (const key of Object.keys(data)) {
+            console.log(key, data[key].first_name);
+        }
     //- data.forEach(function(obj){
     //-   appendRow(obj)
     //- });
