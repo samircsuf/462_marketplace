@@ -1,123 +1,123 @@
 extends layout
 
 block content
-    #main-login.view
-      #login-display
-        .row.vertical-center-row
-          #brand.col-lg-6.full-bg-img.text-center(style='color:white;')
-            h1.brand-heading MARKETPLACE
-            |           
-            p.brand-text Home for service providers
-          |         
-          .col-lg-6
-            form.form-group(method='POST', action='/login')
-              label(for='email', style='color:white;') User Name:
-              |             
-              #email.input-group.col-lg-6
-                span.input-group-addon
-                  i.glyphicon.glyphicon-user
-                |               
-                input.form-control(type='text',name ='email',class='form-control', size='20', placeholder='Enter Email', required,autofocus)
-              |             
-              label(for='pwd', style='color:white;') Password:
-              |             
-              #pwd.input-group.col-lg-6
-                span.input-group-addon
-                  i.glyphicon.glyphicon-lock
-                |               
-                input.form-control(type='password', name='password' class='form-control', size='20',placeholder='Password', required)
-              |             
-              br
-              |             
-              .col-lg-3.col-lg-offset-1(style='display:inline')
-                button.btn.btn-primary(type='submit',href='/login') Login
-              |             
-              a.btn.btn-primary(href='/signup') Sign up
-              
-            #message
-                  if message
-                    h1.text-center #{message}    
-    |   
-    section#contact-us
-      .jumbotron.jumbotron-sm
-        .container
-          .row
-            .col-sm-12.col-lg-12
-              h1.h1
-                | Contact us 
-                small Feel free to contact us
-      |     
+  #main-login.view
+    #login-display
+      .row.vertical-center-row
+        #brand.col-lg-6.full-bg-img.text-center(style='color:white;')
+          h1.brand-heading MARKETPLACE
+          |           
+          p.brand-text Home for service providers
+        |         
+        .col-lg-6
+          form.form-group(method='POST', action='/login')
+            label(for='email', style='color:white;') User Name:
+            |             
+            #email.input-group.col-lg-6
+              span.input-group-addon
+                i.glyphicon.glyphicon-user
+              |               
+              input.form-control(type='text',name ='email',class='form-control', size='20', placeholder='Enter Email', required,autofocus)
+            |             
+            label(for='pwd', style='color:white;') Password:
+            |             
+            #pwd.input-group.col-lg-6
+              span.input-group-addon
+                i.glyphicon.glyphicon-lock
+              |               
+              input.form-control(type='password', name='password' class='form-control', size='20',placeholder='Password', required)
+            |             
+            br
+            |             
+            .col-lg-3.col-lg-offset-1(style='display:inline')
+              button.btn.btn-primary(type='submit',href='/login') Login
+            |             
+            a.btn.btn-primary(href='/signup') Sign up
+
+          #message
+            if message
+              h1.text-center #{message}    
+  |   
+  section#contact-us
+    .jumbotron.jumbotron-sm
       .container
         .row
-          .col-md-8
-            .well.well-sm
-              form
-                .row
-                  .col-md-6
-                    .form-group
-                      label(for='name')
-                        | Name
-                      |                     
-                      input#name.form-control(type='text', placeholder='Enter name', required='required')
-                    |                   
-                    .form-group
-                      label(for='email')
-                        | Email Address
-                      |                     
-                      .input-group
-                        span.input-group-addon
-                          span.glyphicon.glyphicon-envelope
-                        |                       
-                        input#email.form-control(type='email', placeholder='Enter email', required='required')
-                    |                   
-                    .form-group
-                      label(for='subject')
-                        | Subject
-                      |                     
-                      select#subject.form-control(name='subject', required='required')
-                        option(value='na', selected='') Choose One:
-                        |                                 
-                        option(value='service') General Customer Service
-                        |                                 
-                        option(value='suggestions') Suggestions
-                        |                                 
-                        option(value='product') Product Support
-                  |                 
-                  .col-md-6
-                    .form-group
-                      label(for='name')
-                        | Message
-                      |                     
-                      textarea#message.form-control(name='message', rows='9', cols='25', required='required', placeholder='Message')
-                  |                 
-                  .col-md-12
-                    button#btnContactUs.btn.btn-primary.pull-right(type='submit')
-                      | Send Message
-          |         
-          .col-md-4
+          .col-sm-12.col-lg-12
+            h1.h1
+              | Contact us 
+              small Feel free to contact us
+    |     
+    .container
+      .row
+        .col-md-8
+          .well.well-sm
             form
-              legend
-                span.glyphicon.glyphicon-globe
-                |  Our office
-              |             
-              address
-                strong California State University, Fullerton
-                br
-                |                 800 N State College Blvd
-                br
-                |                 Fullerton, CA 92831
-                br
+              .row
+                .col-md-6
+                  .form-group
+                    label(for='name')
+                      | Name
+                    |                     
+                    input#name.form-control(type='text', placeholder='Enter name', required='required')
+                  |                   
+                  .form-group
+                    label(for='email')
+                      | Email Address
+                    |                     
+                    .input-group
+                      span.input-group-addon
+                        span.glyphicon.glyphicon-envelope
+                      |                       
+                      input#email.form-control(type='email', placeholder='Enter email', required='required')
+                  |                   
+                  .form-group
+                    label(for='subject')
+                      | Subject
+                    |                     
+                    select#subject.form-control(name='subject', required='required')
+                      option(value='na', selected='') Choose One:
+                      |                                 
+                      option(value='service') General Customer Service
+                      |                                 
+                      option(value='suggestions') Suggestions
+                      |                                 
+                      option(value='product') Product Support
                 |                 
-                abbr(title='Phone')
-                  | P:
-                |                 (123) 456-7890
-              |             
-              address
-                strong Daniel Nguyen
-                br
+                .col-md-6
+                  .form-group
+                    label(for='name')
+                      | Message
+                    |                     
+                    textarea#message.form-control(name='message', rows='9', cols='25', required='required', placeholder='Message')
                 |                 
-                a(href='mailto:#') nguyen.daniel@gmail.com
-    |   
-    footer
-      a(href='#main-login')
-        p Return to top of the page
+                .col-md-12
+                  button#btnContactUs.btn.btn-primary.pull-right(type='submit')
+                    | Send Message
+        |         
+        .col-md-4
+          form
+            legend
+              span.glyphicon.glyphicon-globe
+              |  Our office
+            |             
+            address
+              strong California State University, Fullerton
+              br
+              |                 800 N State College Blvd
+              br
+              |                 Fullerton, CA 92831
+              br
+              |                 
+              abbr(title='Phone')
+                | P:
+              |                 (123) 456-7890
+            |             
+            address
+              strong Daniel Nguyen
+              br
+              |                 
+              a(href='mailto:#') nguyen.daniel@gmail.com
+  |   
+  footer
+    a(href='#main-login')
+      p Return to top of the page

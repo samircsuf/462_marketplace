@@ -11,6 +11,23 @@ block content
 				form(class='form-signin', action='/signup', method='POST')
 						input(type='email', name='email', class='form-control', placeholder='Email',required)
 						input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+						.row
+							.col-xs-12
+								hr
+								|  Are you a User or a Provider?
+								br
+								.btn-group(data-toggle='buttons')
+								label.btn
+									input(type='radio', name='role', value="User", checked='checked')
+									i.fa.fa-circle-o.fa-2x
+									i.fa.fa-check-circle-o.fa-2x
+									span  User
+								label.btn
+									input(type='radio', name='role', value='Provider')
+									i.fa.fa-circle-o.fa-2x
+									i.fa.fa-check-circle-o.fa-2x
+									span  Provider
+								hr
 						button(class='btn btn-lg btn-primary btn-block', type='submit') Register
 						span.clearfix
 				#message
