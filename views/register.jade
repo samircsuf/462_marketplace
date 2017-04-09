@@ -5,31 +5,34 @@ block content
 		br 
 		br 
 		br
-		div.col-sm-6.col-md-4.col-md-offset-4
+		div.col-xs-6.col-lg-4.col-lg-offset-4
 			h1.text-center.login-title Sign up 
 			div.signup-wall
-				form(class='form-signin', action='/signup', method='POST')
-						input(type='email', name='email', class='form-control', placeholder='Email',required)
-						input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
-						.row
-							.col-xs-12
-								hr
-								|  Are you a User or a Provider?
-								br
-								.btn-group(data-toggle='buttons')
-								label.btn
-									input(type='radio', name='role', value="User", checked='checked')
-									i.fa.fa-circle-o.fa-2x
-									i.fa.fa-check-circle-o.fa-2x
-									span  User
-								label.btn
-									input(type='radio', name='role', value='Provider')
-									i.fa.fa-circle-o.fa-2x
-									i.fa.fa-check-circle-o.fa-2x
-									span  Provider
-								hr
-						button(class='btn btn-lg btn-primary btn-block', type='submit') Register
-						span.clearfix
-				#message
-					if message
-						h1.text-center.error-message #{message}
+		.row
+			.col-lg-9.col-lg-offset-5
+				.btn-group
+					label.btn.btn-primary
+						input(type='radio', name='role', value="User", checked='checked',onclick="changeAction(this);")
+						i.fa.fa-circle-o.fa-2x
+						i.fa.fa-check-circle-o.fa-2x
+						span  User
+					label.btn.btn-primary
+						input(type='radio', name='role', value='Provider', onclick="changeAction(this);")
+						i.fa.fa-circle-o.fa-2x
+						i.fa.fa-check-circle-o.fa-2x
+						span  Provider
+		hr
+		.row			
+			form(id="register-form",class='form-signin', action='/signup', method='POST')
+				input(type='email', name='email', class='form-control', placeholder='Email',required)
+				input(type='text',name='username', class='form-control nomargin', placeholder='Username',required)
+				input(type='password',name='password', class='form-control nomargin', placeholder='Password',required)
+
+				div(id="more-field")
+				button(class='btn btn-lg btn-primary btn-block', type='submit') Register
+				span.clearfix
+
+			#message
+				if message
+					h1.text-center.error-message #{message}
+	script(src="scripts/change-register-action.js")

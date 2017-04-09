@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost/passport';
 
 mongoose.connect(dbURI);
@@ -69,7 +69,7 @@ function getNextSequence (name) {
 
    return ret.seq;
 }
-*/
+
 var providerRecords = [
     {
 	_id: 'AAB100231', //getNextSequence("sid"), //ObjectID('AA1111')	
@@ -179,4 +179,4 @@ Provider.find({ 'services.name' : 'Math Tutor'}).
 
 
 //close the connection
-mongoose.connection.close();
+mongoose.connection.close();*/

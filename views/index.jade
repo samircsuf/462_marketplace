@@ -10,33 +10,41 @@ block content
           p.brand-text Home for service providers
         |         
         .col-lg-6
-          form.form-group(method='POST', action='/login')
-            label(for='email', style='color:white;') User Name:
-            |             
-            #email.input-group.col-lg-6
-              span.input-group-addon
-                i.glyphicon.glyphicon-user
-              |               
-              input.form-control(type='text',name ='email',class='form-control', size='20', placeholder='Enter Email', required,autofocus)
-            |             
-            label(for='pwd', style='color:white;') Password:
-            |             
-            #pwd.input-group.col-lg-6
-              span.input-group-addon
-                i.glyphicon.glyphicon-lock
-              |               
-              input.form-control(type='password', name='password' class='form-control', size='20',placeholder='Password', required)
-            |             
-            br
-            |             
-            .col-lg-3.col-lg-offset-1(style='display:inline')
-              button.btn.btn-primary(type='submit',href='/login') Login
-            |             
-            a.btn.btn-primary(href='/signup') Sign up
+          .row
+            .btn-group.btn-group-horizontal.text-center
+              label.btn.btn-primary
+                input(type='radio', name='role', value="User", checked='checked', onClick="changeAction(this);")
+                span User
+              label.btn.btn-primary
+                input(type='radio', name='role', value='Provider', onClick="changeAction(this);")
+                span  Provider         
+          .row
+            form.form-group(method='POST', action='/login')
+              label(for='email', style='color:white;') User Name:
+              |             
+              #email.input-group.col-lg-6
+                span.input-group-addon
+                  i.glyphicon.glyphicon-user
+                |               
+                input.form-control(type='text',name ='email',class='form-control', size='20', placeholder='Enter Email', required,autofocus)
+              |             
+              label(for='pwd', style='color:white;') Password:
+              |             
+              #pwd.input-group.col-lg-6
+                span.input-group-addon
+                  i.glyphicon.glyphicon-lock
+                |               
+                input.form-control(type='password', name='password' class='form-control', size='20',placeholder='Password', required)
+              |             
+              br
+              div(style='display:inline')
+                button.col-lg-2.btn.btn-primary(type='submit', href='/login') Login
+                |             
+                a.col-lg-offset-2.col-lg-2.btn.btn-primary(href='/signup') Sign up
 
-          #message
-            if message
-              h1.text-center #{message}    
+        #message
+          if message
+            h1.text-center #{message}    
   |   
   section#contact-us
     .jumbotron.jumbotron-sm
@@ -121,3 +129,23 @@ block content
   footer
     a(href='#main-login')
       p Return to top of the page
+
+  script(src="scripts/change-login-action.js")
+
+//-
+  .row
+    .col-lg-4.col-lg-offset-6
+      span(style="color:white; font-size:1.3em")  Are you a User or a Provider?
+        br
+        .btn-group.btn-group-horizontal(data-toggle='buttons', id="role-button")
+        label.btn.active
+          input(type='radio', name='role', value="User", checked='checked', onClick="changeAction(this);")
+          i.fa.fa-circle-o.fa-2x
+          i.fa.fa-dot-circle-o.fa-2x
+          span  User
+        label.btn
+          input(type='radio', name='role', value='Provider', onclick="changeAction(this);")
+          i.fa.fa-circle-o.fa-2x
+          i.fa.fa-dot-circle-o.fa-2x
+          span  Provider
+        hr            
