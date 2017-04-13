@@ -13,13 +13,16 @@ module.exports = function(search_param,res){
     exec(function (err, data) {
     if(err)
         console.log(err);
-    else
+    else{
         // console.log('Found documents for services1: \n', data.split(','));
-         console.log(JSON.stringify(data,null,2));
-         res.render('results',{data:JSON.stringify(data)});
+        // console.log(JSON.stringify(data,null,2));
+        var temp = [];
+        var conSize = 3;
+        for(var i = 0; i < data.length; i += conSize){
+          temp.push(data.slice(i, i + conSize));
+        }
+         res.render('results',{ layout : 'layout', json: temp });
+       }
     });
-    
+
 };
-
-
-
