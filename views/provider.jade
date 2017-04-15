@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    
+    .jumbotron.text-center
+        h1 Update Profile
+        form.form-group(method='POST', action='/provider')
+              input(type='text', id='search', placeholder='First Name', required='')
+              br
+              input(type='text', id='search', placeholder='Last Name', required='')
+              br
+              input(type='text', id='search', placeholder='Username', data-minlength='6', required='')
+              br
+              input(type='password', id='search', placeholder='', required='')
+              br
+              input(type='text', id='search', placeholder='Organization', required='')
+              br
+              input(type='number', id='search', placeholder='Contractor ID', required='')
+              br
+              input(type='text', id='search', placeholder='Contact', required='')
+              br
+              input(type='tel', id='search', placeholder='', required='')
+              br
+              input(type='email', id='search', placeholder='Email', required='')
+              br
+              input(type='number', id='search', placeholder='', required='')
+              br
+              input(type='text', id='search', placeholder='State', required='')
+              br
+              input(type='number', id='search', placeholder='Radius', required='')
+              br
+              input(type='text', id='search', placeholder='Comments', required='')
+              br
+              input(type='text', id='search', placeholder='Subuser', required='')
+              br
+              input(type='text', id='search', placeholder='comment', required='')
+              br
+              input(type='number', id='search', placeholder='Rating', required='')
+              br
+              button(class='btn btn-lg btn-primary', type='submit') Update

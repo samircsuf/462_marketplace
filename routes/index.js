@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../middleware/query');
+var mongo = require('mongodb');
+var assert = require('assert');
+var dbConfig = require('../db');
+
 var isAuthenticated = function (req, res, next) {
-	// if user is authenticated in the session, call the next() to call the next request handler 
+	// if user is authenticated in the session, call the next() to call the next request handler
 	// Passport adds this method to request object. A middleware is allowed to add properties to
 	// request and response objects
 	if (req.isAuthenticated())
@@ -22,12 +26,20 @@ module.exports = function(passport){
 	router.get('/search', function(req, res){
 		res.render('search',{message: req.flash('message')});
 	});
-	
+
 	router.post('/search',function(req,res){
 		query(req.body.search,res);
-	
-		
+
 	});
+	router.get('/profile_page', function(req,res){
+
+		res.render('profile_page', {message: req.flash('message')});
+	});
+
+  router.get('/provider', function(req,res){
+      res.render('provider',{message: req.flash('message')});
+  });
+
 	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('login', { message: req.flash('message') });
@@ -37,7 +49,7 @@ module.exports = function(passport){
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
-		failureFlash : true  
+		failureFlash : true
 	}));
 
 	/* GET Registration Page */
@@ -49,7 +61,7 @@ module.exports = function(passport){
 	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
-		failureFlash : true  
+		failureFlash : true
 	}));
 
 	/* GET Home Page */
@@ -65,8 +77,3 @@ module.exports = function(passport){
 
 	return router;
 }
-
-
-
-
-

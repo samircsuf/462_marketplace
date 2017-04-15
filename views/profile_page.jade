@@ -1,0 +1,137 @@
+extends layout
+block content
+  link(rel="stylesheet" href="https://www.w3schools.com/lib/w3.css")
+  link(rel='stylesheet', href='https://www.w3schools.com/lib/w3-theme-blue-grey.css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  style.
+    html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+  body.w3-theme-l5
+    // Navbar
+    .w3-top
+      .w3-bar.w3-theme-d2.w3-left-align.w3-large
+        a.w3-bar-item.w3-button.w3-hide-medium.w3-hide-large.w3-opennav.w3-right.w3-padding-large.w3-hover-white.w3-large.w3-theme-d2(href='javascript:void(0);', onclick='openNav()')
+          i.fa.fa-bars
+        a.w3-bar-item.w3-button.w3-padding-large.w3-theme-d4(href='#')
+          i.fa.fa-home.w3-margin-right
+          | Logo
+        a.w3-bar-item.w3-button.w3-hide-small.w3-padding-large.w3-hover-white(href='#', title='News')
+          i.fa.fa-globe
+        a.w3-bar-item.w3-button.w3-hide-small.w3-padding-large.w3-hover-white(href='#', title='Account Settings')
+          i.fa.fa-user
+        a.w3-bar-item.w3-button.w3-hide-small.w3-padding-large.w3-hover-white(href='#', title='Messages')
+          i.fa.fa-envelope
+        .w3-hide-small.w3-dropdown-hover
+          button.w3-button.w3-padding-large(title='Notifications')
+            i.fa.fa-bell
+            span.w3-badge.w3-right.w3-small.w3-green
+          .w3-dropdown-content.w3-white.w3-card-4
+            a(href='#') One new friend request
+            a(href='#') John Doe posted on your wall
+            a(href='#') Jane likes your post
+        a.w3-bar-item.w3-button.w3-hide-small.w3-right.w3-padding-large.w3-hover-white(href='#', title='My Account')
+          img.w3-circle(src='/w3images/avatar2.png', style='height:25px;width:25px', alt='Avatar')
+    // Navbar on small screens
+    #navDemo.w3-bar-block.w3-theme-d2.w3-hide.w3-hide-large.w3-hide-medium.w3-large
+      a.w3-bar-item.w3-button.w3-padding-large(href='#') Link 1
+      a.w3-bar-item.w3-button.w3-padding-large(href='#') Link 2
+      a.w3-bar-item.w3-button.w3-padding-large(href='#') Link 3
+      a.w3-bar-item.w3-button.w3-padding-large(href='#') My Profile
+    // Page Container
+    .w3-container.w3-content(style='max-width:1400px;margin-top:80px')
+      // The Grid
+      .w3-row
+        // Left Column
+        .w3-col.m3
+          // Profile
+          .w3-card-2.w3-round.w3-white
+            .w3-container
+              h4.w3-center My Profile
+              p.w3-center
+                img.w3-circle(src='https://s-media-cache-ak0.pinimg.com/originals/69/6e/14/696e141b9132c5b53eac57da7643abd6.jpg', style='height:106px;width:106px', alt='Avatar')
+              hr
+              p
+                i.fa.fa-pencil.fa-fw.w3-margin-right.w3-text-theme
+                |  Designer, UI
+              p
+                i.fa.fa-home.fa-fw.w3-margin-right.w3-text-theme
+                |  London, UK
+              p
+                i.fa.fa-birthday-cake.fa-fw.w3-margin-right.w3-text-theme
+                |  April 1, 1988
+              p
+                div(style='text-align:center')
+                    a.btn.btn-primary(href='/provider', role='button') Update Profile
+          br
+          // Accordion
+          .w3-card-2.w3-round
+            .w3-white
+              button.w3-button.w3-block.w3-theme-l1.w3-left-align(onclick="myFunction('Demo1')")
+                i.fa.fa-circle-o-notch.fa-fw.w3-margin-right
+                |  Projects
+              #Demo1.w3-hide.w3-container
+                p
+              button.w3-button.w3-block.w3-theme-l1.w3-left-align(onclick="myFunction('Demo2')")
+                i.fa.fa-calendar-check-o.fa-fw.w3-margin-right
+                |  My
+              #Demo2.w3-hide.w3-container
+                p Some other text..
+              button.w3-button.w3-block.w3-theme-l1.w3-left-align(onclick="myFunction('Demo3')")
+                i.fa.fa-users.fa-fw.w3-margin-right
+                |  My Photos
+              #Demo3.w3-hide.w3-container
+                .w3-row-padding
+                  br
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/lights.jpg', style='width:100%')
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/nature.jpg', style='width:100%')
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/mountains.jpg', style='width:100%')
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/forest.jpg', style='width:100%')
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/nature.jpg', style='width:100%')
+                  .w3-half
+                    img.w3-margin-bottom(src='/w3images/fjords.jpg', style='width:100%')
+          br
+          // Interests
+          .w3-card-2.w3-round.w3-white.w3-hide-small
+            .w3-container
+              p Services
+              p
+                span.w3-tag.w3-small.w3-theme-d5 Math
+                span.w3-tag.w3-small.w3-theme-d4 Compuer Science
+                span.w3-tag.w3-small.w3-theme-d3 Basket Weaving
+                span.w3-tag.w3-small.w3-theme-d2 Civil Engineering
+              p Rate
+              p
+                span.w3-tag.w3-small.w3-theme-d5 $25
+              p Radius
+              p
+                span.w3-tag.w3-small.w3-theme-d5 25
+
+
+          br
+        .w3-col.m7
+          .w3-row-padding
+            .w3-col.m12
+              .w3-card-2.w3-round.w3-white
+                .w3-container.w3-padding
+                  h6.w3-opacity Post job request on their wall!
+                  textarea.form-control(required='', maxlength='200', rows='3', placeholder='Say something!')
+                  div(style='text-align:right')
+                    button.w3-button.w3-theme(type='button')
+                      i.fa.fa-pencil
+                      |   Post
+          // End Right Column
+        // End Grid
+      // End Page Container
+    br
+    // Footer
+    footer.w3-container.w3-theme-d3.w3-padding-16
+      h5 Footer
+    footer.w3-container.w3-theme-d5
+      p
+        | Powered by
+        a(href='https://www.w3schools.com/w3css/default.asp', target='_blank') w3.css

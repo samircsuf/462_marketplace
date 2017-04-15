@@ -2,43 +2,25 @@ extends layout
 
 
 block content
-    
+
     .jumbotron.text-center
         h1 Heres what we found
     .text-left
       ol(id='result_list', style='width:100%' )
-        div
-          dt Jill's  Tutoring 
-          dd 20+ years of tutoring experience
-          dd $50.00 per hour
-        br
-        div
-          dt Joe's Tutoring
-          dd Joe teaches math,science, and basket weaving.
-          dd $94.00 per hour 
-    script.
-      //- var data = !{data};
-      //- data.forEach(function(obj){
-      //-   appendRow(obj)
-      //- });
-   
-      //- // append row to the HTML table
-      //- function appendRow() {
-      //-     var tbl = document.getElementById('result_table'), // table reference
-      //-         row = tbl.insertRow(tbl.rows.length),      // append table row
-      //-         i;
-      //-     // insert table cells to the new row
-      //-     for (i = 0; i < tbl.rows[0].cells.length; i++) {
-      //-         createCell(row.insertCell(i), obj.First_name, 'row');
-      //-     }
-      //- }
-      
-      //- // create DIV element and append to the table cell
-      //- function createCell(cell, text, style) {
-      //-     var div = document.createElement('div'), // create DIV element
-      //-         txt = document.createTextNode(text); // create text node
-      //-     div.appendChild(txt);                    // append text node to the DIV
-      //-     div.setAttribute('class', style);        // set DIV class attribute
-      //-     div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-      //-     cell.appendChild(div);                   // append DIV to the table cell
-      //- }
+      div
+        each cursor in json
+          each obj in cursor
+            .col-sm-6.col-md-4
+              .thumbnail
+                img.img-responsive(src='https://s-media-cache-ak0.pinimg.com/originals/69/6e/14/696e141b9132c5b53eac57da7643abd6.jpg', alt='...')
+                .caption
+                  h3 !{obj.first_name} !{obj.last_name}
+                  p.description
+                    - var str = JSON.stringify(obj.services)
+                    - var nStr = JSON.parse(str)
+                    - for (var temp in nStr)
+                      p #{nStr[temp].name} - $#{nStr[temp].rate}
+
+
+                  .clearfix
+                    a.btn.btn-success.pull-right(href='/profile_page', role='button') Profile
