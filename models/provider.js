@@ -7,12 +7,13 @@ var providerSchema = new Schema({
     last_name: { type: String, required: false, uppercase: true },
     username: { type: String },
     password: { type: String }, //makes password accessible by default so that we can fetch it from db.Normally, it should be false
-    email:{ type: String, required: false },
+    email: { type: String, required: false },
     organization: { type: String, required: false },
     contractorID: { type: String, required: false },
     contact: { //one service provider will have only one group of 'contact' information 
         phone: { type: Number, required: false },
         email: { type: String, match: /\S+@\S+\.\S+/, required: false },
+        address: { type: String },
         zip: { type: Number, required: false },
         state: { type: String, required: false }
     },
