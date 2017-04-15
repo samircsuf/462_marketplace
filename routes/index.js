@@ -4,6 +4,7 @@ var query = require('../middleware/query');
 var mongo = require('mongodb');
 var assert = require('assert');
 var dbConfig = require('../db');
+var update_provider = require('../middleware/update_info');
 
 var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler
@@ -28,12 +29,16 @@ module.exports = function(passport) {
         res.render('search', { message: req.flash('message') });
     });
 
+    //Handle provider update information
+    router.post('/update', function(req, res) {
+        update_provider(req, res);
+    });
+
     router.post('/search', function(req, res) {
         query(req.body.search, res);
 
     });
     router.get('/profile_page', function(req, res) {
-
         res.render('profile_page', { message: req.flash('message') });
     });
 
@@ -68,8 +73,7 @@ module.exports = function(passport) {
 
     /* GET Home Page */
     router.get('/home', isAuthenticated, function(req, res) {
-        res.locals.user = req.user;
-        res.render('profile');
+        res.render('profile_page', { user: req.user });
     });
 
     /* Handle Logout */
