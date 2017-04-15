@@ -16,12 +16,29 @@ var Provider = require('./models/provider.js');
     if(err)
         console.log(err);
     else{
-        console.log("RAW: " + data);
+      console.log(data[0]['services']);
+      var nTemp = JSON.stringify(data[0]['services']);
+//      for (var i in data)
+//        for(var k in i){
+//          console.log(data[i][k]);
+//        }
+      var temp = JSON.parse(nTemp);
+      console.log(temp[0]['rate']);
+//        var temp = data[0]['services'];
+//        console.log(temp);
+//        var result = JSON.parse(temp);
 
-        data.forEach(function(obj){
-            console.log(obj.services);
-            
-        })
-    ;
+//      Object.keys(data[0]['services']).forEach(function(key) {
+//                  console.log(key,data[0]['_doc'][key]);
+//      });
+        //const temp = data[0]['services'];
+//        for(nTemp in data){
+            //console.log(typeof(data[nTemp]['services']));
+//            console.log(Object.keys(data[nTemp]));
+            //console.log(data[nTemp]['services']['toJSON']);
+//            Object.keys(data[nTemp]).forEach(function(key) {
+//              console.log(key,data[nTemp][key]);
+//            });
+//          }
        }
     });

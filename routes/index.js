@@ -32,6 +32,7 @@ module.exports = function(passport){
 
 	});
 	router.get('/profile_page', function(req,res){
+
 		res.render('profile_page', {message: req.flash('message')});
 	});
 
