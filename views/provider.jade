@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    
+
     .jumbotron.text-center
         h1 Update Profile
         form.form-group(method='POST', action='/provider')
@@ -11,7 +11,7 @@ block content
               br
               input(type='text', id='search', placeholder='Username', data-minlength='6', required='')
               br
-              input(type='password', id='search', placeholder='', required='')
+              input(type='password', id='search', placeholder='Password', required='')
               br
               input(type='text', id='search', placeholder='Organization', required='')
               br
@@ -19,11 +19,11 @@ block content
               br
               input(type='text', id='search', placeholder='Contact', required='')
               br
-              input(type='tel', id='search', placeholder='', required='')
+              input(type='tel', id='search', placeholder='Phone Number', required='')
               br
               input(type='email', id='search', placeholder='Email', required='')
               br
-              input(type='number', id='search', placeholder='', required='')
+              input(type='number', id='search', placeholder='Zip', required='')
               br
               input(type='text', id='search', placeholder='State', required='')
               br

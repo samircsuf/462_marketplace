@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../middleware/query');
+var profile_query = require('../middleware/profile_query');
 var mongo = require('mongodb');
 var assert = require('assert');
 var dbConfig = require('../db');
+var Provider = require('../models/provider')
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler
@@ -31,9 +33,13 @@ module.exports = function(passport){
 		query(req.body.search,res);
 
 	});
-	router.get('/profile_page', function(req,res){
 
-		res.render('profile_page', {message: req.flash('message')});
+	router.post('/provider',function(req,res){
+
+	});
+	router.get('/profile_page/:id', function(req,res){
+
+		profile_query(req.params.id,res);
 	});
 
   router.get('/provider', function(req,res){

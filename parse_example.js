@@ -16,14 +16,14 @@ var Provider = require('./models/provider.js');
     if(err)
         console.log(err);
     else{
-      console.log(data[0]['services']);
-      var nTemp = JSON.stringify(data[0]['services']);
+      console.log(data[1]['services']);
+      var nTemp = JSON.stringify(data[1]['services']);
 //      for (var i in data)
 //        for(var k in i){
 //          console.log(data[i][k]);
 //        }
       var temp = JSON.parse(nTemp);
-      console.log(temp[0]['rate']);
+      console.log(temp[1]['rate']);
 //        var temp = data[0]['services'];
 //        console.log(temp);
 //        var result = JSON.parse(temp);

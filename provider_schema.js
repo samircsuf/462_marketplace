@@ -19,14 +19,13 @@ mongoose.connection.on('disconnected', function() {
 var Schema = mongoose.Schema;
 
 var providerSchema = new Schema({
-	_id: {type: String, required: true}, //getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: {type: String, required: true, uppercase: true},
 	last_name: {type: String, required: true, uppercase: true},
 	username: {type: String, min: 6, max: 35, required: true, lowercase: true, index: { unique: true }},
 	password: {type: String, min: 8, max: 16, select: true},//makes password accessible by default so that we can fetch it from db.Normally, it should be false
 	organization: {type: String, required:false},
 	contractorID:{type: String, required:true},
-	contact:{//one service provider will have only one group of 'contact' information 
+	contact:{//one service provider will have only one group of 'contact' information
 		phone:{type: Number, required: true},
 		email: {type: String, match: /\S+@\S+\.\S+/, required: true},
 		zip: {type: Number, required: true},
@@ -71,48 +70,10 @@ function getNextSequence (name) {
 }
 */
 var providerRecords = [
-    {
-	_id: 'AAB100231', //getNextSequence("sid"), //ObjectID('AA1111')	
-	first_name: 'John',
-	last_name: 'Lowes',
-    username: 'jlowes',
-	organization: 'XYZ Contractors',
-	contractorID: '1234567',
-	contact:{
-		phone:7148012345,
-		email: 'xyz@gmail.com',
-		zip: 92831,
-		state: 'CA'
-    },
-	radius: 8,
-    comments:[{
-        subuser: 'xxxxx',
-		comment: 'Best ever Service',
-		rating: 4.5
-    },
-    {   
-        subuser: 'yyyy',
-		comment: 'Great Service',
-		rating: 4.0
-    }],
-	services:[{
-        name:'Math Tutor', 
-        rate: 15
-        },
-        {
-        name:'Science Tutor',
-        rate: 20
-        }
-        //{name:'Coding Assignment', rate: 25},
-        //{name:'Code Troubleshooting', rate: 30}
-    ],
-	created: Date.now(function(){return new Date().toISOString();}),
-	modified: Date.now(function(){return new Date().toISOString();})
-},{
-	_id: 'AAB100023',//getNextSequence("sid"), //ObjectID('AA1111')	
-	first_name: 'Eric',
-	last_name: 'Meyers',
-    username: 'ericmc',
+{
+	first_name: 'Daniel',
+	last_name: 'Castro',
+    username: 'dcastro',
 	organization: 'ABC Contractors',
 	contractorID: '1234567',
 	contact:{
@@ -127,19 +88,20 @@ var providerRecords = [
 		comment: 'Best ever Service',
 		rating: 4.5
     },
-    {   
+    {
         subuser: 'yyyy',
 		comment: 'Great Service',
 		rating: 4.0
     }],
 	services:[{
-        name:'Math Tutor', 
-        rate: 15
+        name:'Math Tutor',
+        rate: 200
         },
         {
         name:'Coding Assignment',
-        rate: 20
+        rate: 200
         }
+
         //{name:'Coding Assignment', rate: 25},
         //{name:'Code Troubleshooting', rate: 30}
     ],
@@ -163,9 +125,9 @@ function dc (msg, callback) {
     });
 }
 
-Provider.find({ 'services.name' : 'Math Tutor'}).
+Provider.find({ 'username' : 'dcastro'}).
  where('radius').lt(20).
- where('services.rate').gt(10).lt(20).
+ where('services.rate').gt(10).lt(210).
  where('comments.rating').in([4.0, 4.5]).
  limit(10).
  sort('-radius').

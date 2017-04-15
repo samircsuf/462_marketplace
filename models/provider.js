@@ -3,14 +3,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var providerSchema = new Schema({
-    _id: { type: String, required: true }, //getNextSequence("sid"), //ObjectID('AA1111')	
     first_name: { type: String, required: true, uppercase: true },
     last_name: { type: String, required: true, uppercase: true },
     username: { type: String, min: 6, max: 35, required: true, lowercase: true, index: { unique: true } },
     password: { type: String, min: 8, max: 16, select: true }, //makes password accessible by default so that we can fetch it from db.Normally, it should be false
     organization: { type: String, required: false },
     contractorID: { type: String, required: true },
-    contact: { //one service provider will have only one group of 'contact' information 
+    contact: { //one service provider will have only one group of 'contact' information
         phone: { type: Number, required: true },
         email: { type: String, match: /\S+@\S+\.\S+/, required: true },
         zip: { type: Number, required: true },

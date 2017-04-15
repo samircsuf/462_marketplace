@@ -20,7 +20,6 @@ block content
                     - var nStr = JSON.parse(str)
                     - for (var temp in nStr)
                       p #{nStr[temp].name} - $#{nStr[temp].rate}
-
-
-                  .clearfix
-                    a.btn.btn-success.pull-right(href='/profile_page', role='button') Profile
+                    .clearfix
+                    - var id = obj._id
+                    a.btn.btn-success.pull-right(href='/profile_page/' + id, role='button' result=user) Profile
