@@ -3,7 +3,8 @@ var Provider = require('../models/provider.js');
 var export_data = null;
 
 module.exports = function(search_param,res){
-    Provider.find({ 'services.name' : search_param}).
+    var re = new RegExp(search_param, 'i');
+    Provider.find().or([{ 'services.name' : {$regex: re}}, { 'organization' : {$regex: re}}, { 'username' : {$regex: re}}, { 'first_name' : {$regex: re}}, { 'last_name': {$regex: re}}]).
     where('radius').lt(20).
     where('services.rate').gt(10).lt(20).
     where('comments.rating').in([4.0, 4.5]).
