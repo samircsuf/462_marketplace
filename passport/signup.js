@@ -1,5 +1,5 @@
 var LocalStrategy   = require('passport-local').Strategy;
-var User = require('../models/user');
+var User = require('../models/provider');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
@@ -30,9 +30,8 @@ module.exports = function(passport){
                         // set the user's local credentials
                         newUser.username = username;
                         newUser.password = createHash(password);
-                        newUser.email = req.param('email');
-                        newUser.venueName = req.param('venueName');
-                        newUser.website = req.param('website');
+                        newUser.email = username;
+        
 
                         // save the user
                         newUser.save(function(err) {
