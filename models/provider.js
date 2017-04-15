@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var providerSchema = new Schema({
-    id: { type: String}, //getNextSequence("sid"), //ObjectID('AA1111')	
     first_name: { type: String, required: false, uppercase: true },
     last_name: { type: String, required: false, uppercase: true },
     username: { type: String },
@@ -23,7 +22,7 @@ var providerSchema = new Schema({
         comment: { type: String, required: false },
         rating: { type: Number, required: false }
     }],
-    services: { //one service provider can register to multiple services in a site
+    services: { //one servic tffgggtf6e provider can register to multiple services in a site
         name: { type: String, required: false },
         rate: { type: Number, required: false }
     }, //{type: Array , "default" : []}, changed to single field to make it simplicity

@@ -19,7 +19,6 @@ mongoose.connection.on('disconnected', function() {
 var Schema = mongoose.Schema;
 
 var providerSchema = new Schema({
-	_id: {type: String, required: true}, //getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: {type: String, required: true, uppercase: true},
 	last_name: {type: String, required: true, uppercase: true},
 	username: {type: String, min: 6, max: 35, required: true, lowercase: true, index: { unique: true }},
@@ -47,7 +46,7 @@ var providerSchema = new Schema({
 }, {strict: true});// 'true' indicates that values not defined in schema arent saved into the db
 //we would use population to refer between collections.
 
-var Provider = mongoose.model('Provider', providerSchema);
+var Provider = mongoose.model('provider', providerSchema);
 
 //auto increment _id
 /*
@@ -72,7 +71,6 @@ function getNextSequence (name) {
 */
 var providerRecords = [
     {
-	_id: 'AAB100231', //getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: 'John',
 	last_name: 'Lowes',
     username: 'jlowes',
@@ -109,7 +107,6 @@ var providerRecords = [
 	created: Date.now(function(){return new Date().toISOString();}),
 	modified: Date.now(function(){return new Date().toISOString();})
 },{
-	_id: 'AAB100023',//getNextSequence("sid"), //ObjectID('AA1111')	
 	first_name: 'Eric',
 	last_name: 'Meyers',
     username: 'ericmc',
