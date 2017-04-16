@@ -19,7 +19,7 @@ block content
                     - var str = JSON.stringify(obj.services)
                     - var nStr = JSON.parse(str)
                     - for (var temp in nStr)
-                      p #{nStr[temp].name} - $#{nStr[temp].rate}
-                    .clearfix
-                    - var id = obj._id
-                    a.btn.btn-success.pull-right(href='/profile_page/' + id, role='button' result=user) Profile
+                        p #{nStr[temp].name} - $#{nStr[temp].rate}
+                      .clearfix
+                      - var id = obj._id
+                      a.btn.btn-success.pull-right(href='/profile_page/' + id, role='button' result=user) Profile
