@@ -4,7 +4,8 @@ block content
     br
     br
     br
-    form.form-horizontal(action="/update", method="POST")
+    -var userID = data
+    form.form-horizontal(action='/provider/' + data, method="POST")
         fieldset
             // Form Name
             legend Personal details

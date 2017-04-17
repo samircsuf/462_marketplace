@@ -42,26 +42,32 @@ block content
       // The Grid
       .w3-row
         // Left Column
-        .w3-col.m3
+        .w3-col.m4
           // Profile
           .w3-card-2.w3-round.w3-white
             .w3-container
-              h4.w3-center Haha
-              p.w3-center
-                img.w3-circle(src='https://s-media-cache-ak0.pinimg.com/originals/69/6e/14/696e141b9132c5b53eac57da7643abd6.jpg', style='height:106px;width:106px', alt='Avatar')
-              hr
-              p
-                i.fa.fa-pencil.fa-fw.w3-margin-right.w3-text-theme
-                |  Change this
-              p
-                i.fa.fa-home.fa-fw.w3-margin-right.w3-text-theme
-                |  London, UK
-              p
-                i.fa.fa-birthday-cake.fa-fw.w3-margin-right.w3-text-theme
-                |  April 1, 1988
-              p
-                div(style='text-align:center')
-                    a.btn.btn-primary(href='/provider', role='button') Update Profile
+              each val in json
+                each obj in val
+                  h4.w3-center !{obj.first_name} !{obj.last_name}
+                  p.w3-center
+                    img.w3-circle(src='https://s-media-cache-ak0.pinimg.com/originals/69/6e/14/696e141b9132c5b53eac57da7643abd6.jpg', style='height:106px;width:106px', alt='Avatar')
+                  hr
+                  p
+                    i.fa.fa-home.fa-fw.w3-margin-right.w3-text-theme
+                    |  !{obj.contact.state}, !{obj.contact.zip}
+                  p
+                    i.fa.fa-phone.fa-fw.w3-margin-right.w3-text-theme
+                    |  !{obj.contact.phone}
+                  p
+                    i.fa.fa-envelope.fa-fw.w3-margin-right.w3-text-theme
+                    |  !{obj.contact.email}
+                  p
+                    i.fa.fa-briefcase.fa-fw.w3-margin-right.w3-text-theme
+                    |  !{obj.organization}
+                  p
+                    - var userID = obj._id
+                    div(style='text-align:center')
+                        a.btn.btn-primary(href='/provider/' + userID, role='button') Update Profile
           br
           // Accordion
           .w3-card-2.w3-round
@@ -73,9 +79,7 @@ block content
                 p
               button.w3-button.w3-block.w3-theme-l1.w3-left-align(onclick="myFunction('Demo2')")
                 i.fa.fa-calendar-check-o.fa-fw.w3-margin-right
-                |  My
-              #Demo2.w3-hide.w3-container
-                p Some other text..
+                |  My Pictures
               button.w3-button.w3-block.w3-theme-l1.w3-left-align(onclick="myFunction('Demo3')")
                 i.fa.fa-users.fa-fw.w3-margin-right
                 |  My Photos
@@ -96,22 +100,23 @@ block content
                     img.w3-margin-bottom(src='/w3images/fjords.jpg', style='width:100%')
           br
           // Interests
-          .w3-card-2.w3-round.w3-white.w3-hide-small
-            .w3-container
-              p Services
-              p
-                span.w3-tag.w3-small.w3-theme-d5 Math
-                span.w3-tag.w3-small.w3-theme-d4 Compuer Science
-                span.w3-tag.w3-small.w3-theme-d3 Basket Weaving
-                span.w3-tag.w3-small.w3-theme-d2 Civil Engineering
-              p Rate
-              p
-                span.w3-tag.w3-small.w3-theme-d5 $25
-              p Radius
-              p
-                span.w3-tag.w3-small.w3-theme-d5 25
+          each val in json
+            each obj in val
+              .w3-card-2.w3-round.w3-white.w3-hide-small
+                .w3-container
+                  p Services
+                  p
+                  - var str = JSON.stringify(obj.services)
+                  - var nStr = JSON.parse(str)
+                  - for (var temp in nStr)
+                      span.w3-tag.w3-small.w3-theme-d5 !{nStr[temp].name}
 
-
+                  p Rate
+                  p
+                    span.w3-tag.w3-small.w3-theme-d5 $!{nStr[temp].rate}
+                  p Radius
+                  p
+                    span.w3-tag.w3-small.w3-theme-d5 !{obj.radius}
           br
         .w3-col.m7
           .w3-row-padding

@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../middleware/query');
-var mongo = require('mongodb');
+var profile_query = require('../middleware/profile_query');
+var mongo = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 var dbConfig = require('../db');
-var update_provider = require('../middleware/update_info');
+var Provider = require('../models/provider')
 
 var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler
@@ -16,7 +18,6 @@ var isAuthenticated = function(req, res, next) {
     // if the user is not authenticated then redirect him to the login page
     res.redirect('/');
 }
-
 module.exports = function(passport) {
 
     /* GET login page. */
@@ -29,21 +30,35 @@ module.exports = function(passport) {
         res.render('search', { message: req.flash('message') });
     });
 
-    //Handle provider update information
-    router.post('/update', function(req, res) {
-        update_provider(req, res);
-    });
-
     router.post('/search', function(req, res) {
         query(req.body.search, res);
 
     });
-    router.get('/profile_page', function(req, res) {
-        res.render('profile_page', { message: req.flash('message') });
+
+    router.get('/profile_page/:id', function(req, res) {
+        profile_query(req.params.id, res);
     });
 
-    router.get('/provider', function(req, res) {
-        res.render('provider', { message: req.flash('message') });
+    router.post('/provider/:id', function(req, res) {
+        var data = {
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            organization: req.body.org,
+            "contact.phone": req.body.tel,
+            "contact.email": req.body.email,
+            "contact.state": req.body.state,
+            "contact.zip": req.body.zip,
+            radius: req.body.radius
+        };
+        var userID = req.params.id;
+        Provider.updateOne({ "_id": objectId(userID) }, { $set: data }, function(err, results) {
+            console.log("Updated Item.");
+        });
+        profile_query(req.params.id, res);
+    });
+
+    router.get('/provider/:id', function(req, res) {
+        res.render('provider', { data: req.params.id });
     });
 
     router.get('/login', function(req, res) {
@@ -57,7 +72,6 @@ module.exports = function(passport) {
         failureRedirect: '/',
         failureFlash: true
     }));
-
 
     /* GET Registration Page */
     router.get('/signup', function(req, res) {
@@ -73,7 +87,7 @@ module.exports = function(passport) {
 
     /* GET Home Page */
     router.get('/home', isAuthenticated, function(req, res) {
-        res.render('profile_page', { user: req.user });
+        res.render('profile', { user: req.user });
     });
 
     /* Handle Logout */
@@ -83,4 +97,4 @@ module.exports = function(passport) {
     });
 
     return router;
-};
+}
