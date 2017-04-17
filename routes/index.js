@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var query = require('../middleware/query');
 var profile_query = require('../middleware/profile_query');
+var update = require('../middleware/update')
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
@@ -40,25 +41,11 @@ module.exports = function(passport){
 	});
 
 	router.post('/provider/:id',function(req,res){
-		var data = {
-			first_name : req.body.firstName,
-			last_name : req.body.lastName,
-			organization: req.body.org,
-			"contact.phone" : req.body.tel,
-			"contact.email" : req.body.email,
-			"contact.state" : req.body.state,
-			"contact.zip" : req.body.zip,
-			radius : req.body.radius
-		};
-		var userID = req.params.id;
-			Provider.updateOne({"_id": objectId(userID)}, {$set: data}, function(err, results){
-			console.log("Updated Item.");
-		});
-		profile_query(req.params.id,res);
+		update(req.params.id,res, req);
 	});
 
   router.get('/provider/:id', function(req,res){
-      res.render('provider',{data : req.params.id});
+      res.render('provider',{data : req.params.id, user: req.user});
   });
 
 	router.get('/login', function(req, res) {

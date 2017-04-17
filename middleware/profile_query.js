@@ -3,14 +3,12 @@ var Provider = require('../models/provider.js');
 var export_data = null;
 
 module.exports = function(search_param,res){
-  var re = new RegExp(search_param, 'i');
+    var re = new RegExp(search_param, 'i');
     Provider.find().or([{'_id' : search_param }, { 'services.name' : {$regex: re}}, { 'organization' : {$regex: re}}, { 'username' : {$regex: re}}, { 'first_name' : {$regex: re}}, { 'last_name': {$regex: re}}]).
     exec(function (err, data) {
     if(err)
         console.log(err);
     else{
-        console.log("hello");
-        console.log(data);
         // console.log('Found documents for services1: \n', data.split(','));
         // console.log(JSON.stringify(data,null,2));
         var temp = [];
